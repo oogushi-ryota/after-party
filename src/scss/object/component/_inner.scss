@@ -1,0 +1,17 @@
+@use "global/import" as *;
+
+.c-inner {
+  & {
+    width: 100%;
+    height: 100%;
+    padding: 0 2rem;
+  }
+
+  @include pc {
+    
+  }
+
+  @include sp {
+    
+  }
+}

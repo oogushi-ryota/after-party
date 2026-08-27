@@ -1,0 +1,57 @@
+@use "global/import" as *;
+
+.c-btn {
+  & {
+    color: color(wt,off);
+    font-size: 2rem;
+    font-weight: $base-font-bold;
+    line-height: 100%;
+    letter-spacing: .1em;
+    border-radius: 100vmax;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 31rem;
+    height: 7.2rem;
+    background-color: color(brn,base);
+    border: solid 1px color(brn,base);
+    margin-inline: auto;
+    position: relative;
+    cursor: pointer;
+    transition: color .3s ease-out, background-color .3s ease-out;
+    @include text-trim;
+
+    &::after {
+      content: ">";
+      color: color(wt,off);
+      font-size: 2rem;
+      font-weight: $base-font-bold;
+      position: absolute;
+      top: 50%;
+      right: 2rem;
+      transform:  translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transition: color .3s ease-out;
+    }
+
+    @include pc {
+      @include hover {
+        background-color: color(wt,off);
+        color: color(brn,base);
+
+        &::after {
+          color: color(brn,base);
+        }
+      }
+    }
+  }
+
+  @include pc {
+    
+  }
+
+  @include sp {
+    
+  }
+}

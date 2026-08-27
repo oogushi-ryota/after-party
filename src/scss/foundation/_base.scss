@@ -1,0 +1,76 @@
+@use "global/import" as *;
+
+// // ▼アドビフォント_チラつき防止
+// html {
+//   visibility: hidden;
+//   /* ▼スクロールバーを無効化 (Firefox) */
+//   scrollbar-width: none;
+//   /* ▲スクロールバーを無効化 (Firefox) */
+// }
+
+// html.wf-active {
+//   visibility: visible;
+// }
+// // ▲アドビフォント_チラつき防止
+
+html {
+  font-size:62.5%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@include pc {
+  html {
+    // 390px時点のサイズ（=10px）で固定し、SPからそれ以上は拡大させない
+    font-size: 10px;
+  }
+
+  a[href^="tel:"] {
+    pointer-events: none;
+  }
+}
+
+@include sp {
+  html {
+    font-size: calc(10 * (100vw / 390));
+  }
+}
+
+body {
+  color: $base-font-color;
+  font-family: $ff-noto-serif-jp;
+  font-style: normal;
+  font-optical-sizing: auto;
+  background-color: $base-bg-color;
+}
+
+// アンカーリンクでのスクロール時、ヘッダー分オフセットする（セクションごとに上書き可）
+section[id] {
+  scroll-margin-top: var(--header-height);
+}
+
+#message,
+#album {
+  scroll-margin-top: 0;
+}
+
+.pc {
+  display: block !important;
+
+  @include sp {
+    display: none !important;
+  }
+}
+
+.sp {
+  display: none !important;
+
+  @include sp {
+    display: block !important;
+  }
+}
